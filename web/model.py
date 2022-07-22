@@ -20,7 +20,7 @@ class Advert(db.Model):
     __tablename__ = "adverts"
 
 
-    # advert_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    advert_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     advert_date = db.Column(db.String(14), nullable=True)
     slot_id = db.Column(db.Integer, nullable=True)
     device = db.Column(db.String(14), nullable=True)

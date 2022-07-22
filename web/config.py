@@ -1,4 +1,4 @@
-from msilib.schema import AdminExecuteSequence
+# from msilib.schema import AdminExecuteSequence
 
 
 DEV_DB = 'sqlite:///adverts.db'
