@@ -21,7 +21,7 @@ def all_data():
     return jsonify(all_data) 
 @app.route('/alldata2', methods=['GET'])
 def all_data2():
-    all_data = model.Advert.Query.all().fetchall()
+    all_data = model.Advert.query.all().fetchall()
     return jsonify(all_data) 
 
 @app.route('/request_data', methods=['POST'])
