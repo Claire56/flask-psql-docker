@@ -6,7 +6,7 @@ services:
     ports:
       - 5000:5000
     environment: 
-      - DEBUG=1
+      - DEBUG=0
     networks:
       - flask_psql
   proxy:
@@ -30,7 +30,18 @@ services:
       - flask_psql
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/web/seed.py
+      # - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/web/seed.py
+  pgadmin-compose:
+    image: dpage/pgadmin4
+    environment: 
+      PGADMIN_DEFAULT_EMAIL: "test@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "test123!"
+    ports: 
+      - "16543:80"
+    depends_on: 
+      - db  
+    networks:
+      - flask_psql
 
 networks:
   flask_psql:
