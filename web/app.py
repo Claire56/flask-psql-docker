@@ -1,11 +1,10 @@
 from flask import Flask, request, jsonify, render_template
 import sqlite3 as sqlite
 # from flask_negotiate import consumes, produces
-import sys
+import sys , os,json
 from helper import build_advert_query, build_advert_sql_query
-import json
+import model
 
-import os
 app = Flask(__name__)
 
 
@@ -14,12 +13,15 @@ def home():
     return """<h1>ML project</h1>
     <p>A prototype API to filter data </p>
     """
-
 @app.route('/alldata', methods=['GET'])
 def all_data():
     conn = sqlite.connect('../api/advertisings.db')
     cur = conn.cursor()
     all_data = cur.execute("SELECT * FROM advertisings;").fetchall()
+    return jsonify(all_data) 
+@app.route('/alldata2', methods=['GET'])
+def all_data2():
+    all_data = model.Advert.Query.all().fetchall()
     return jsonify(all_data) 
 
 @app.route('/request_data', methods=['POST'])

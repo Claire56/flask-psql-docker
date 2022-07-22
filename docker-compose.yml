@@ -30,6 +30,7 @@ services:
       - flask_psql
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/seed.py
 
 networks:
   flask_psql:
